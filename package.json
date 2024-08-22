@@ -1,0 +1,34 @@
+{
+  "name": "school_management_system",
+  "version": "1.0.0",
+  "description": "A backend Project to manage schools data.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+  },
+  "keywords": [
+    "backend",
+    "schools",
+    "schoolManagement",
+    "node",
+    "express",
+    "mySQL"
+  ],
+  "author": "Keshav Kumar Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Keshav2606/School_Management_System/issues"
+  },
+  "homepage": "https://github.com/Keshav2606/School_Management_System#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "prettier": "^1.19.1"
+  }
+}
