@@ -1,5 +1,6 @@
 import { conn } from "../db/index.js";
 import { ApiError } from "../utils/ApiError.utils.js";
+import { ApiResponse } from "../utils/ApiResponse.utils.js";
 
 
 const listSchools = (req, res) => {
@@ -12,12 +13,18 @@ const listSchools = (req, res) => {
         ORDER BY distance;
     `;
 
-    const data = conn.query(query, (error, result) => {
+    conn.query(query, (error, result) => {
         if(error){
             throw new ApiError(500, "Unable to fetch data.")
         }
+
+        return res.status(200)
+        .json(new ApiResponse(
+            200,
+            "Schools data fetched successfully.",
+            result
+        ))
     })
-    console.log(data)
 }
 
 export default listSchools;

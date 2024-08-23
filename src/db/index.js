@@ -1,6 +1,6 @@
 import mysql from "mysql";
 
-export const conn = null;
+export var conn = null;
 const connectDB = async () => {
     conn = mysql.createConnection({
         host: process.env.MYSQL_HOST,
