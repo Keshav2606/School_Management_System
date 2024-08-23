@@ -10,6 +10,18 @@ const addSchool = (req, res) => {
         throw new ApiError(400, "All fields are required.")
     }
 
+    if(typeof name !== "string"){
+        throw new ApiError(400, "Name should be in String format.")
+    }
+    
+    if(typeof address !== "string"){
+        throw new ApiError(400, "Address should be in String format.")
+    }
+
+    if(typeof latitude !== "number" && typeof longitude !== "number"){
+        throw new ApiError(400, "Latitide and Longitude should be in Number format.")
+    }
+
     let query = "INSERT INTO schools (name, address, latitude, longitude) VALUES (?, ?, ?, ?)"
 
     conn.query(query, [name, address, latitude, longitude] , (error, result) => {
