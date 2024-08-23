@@ -1,17 +1,7 @@
 import mysql from "mysql2";
-import fs from "fs";
 
 export var conn = null;
 const connectDB = () => {
-    // conn = mysql.createConnection({
-    //     host: process.env.MYSQL_HOST,
-    //     user: process.env.MYSQL_USERNAME,
-    //     password: process.env.MYSQL_PASSWORD,
-    //     database: process.env.DB_NAME,
-    //     ssl: {
-    //         ca: fs.readFileSync('src/db/ca.pem')
-    //     }
-    // });
 
     conn = mysql.createConnection(process.env.MYSQL_URI)
 

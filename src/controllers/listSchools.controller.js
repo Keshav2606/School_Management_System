@@ -4,7 +4,8 @@ import { ApiResponse } from "../utils/ApiResponse.utils.js";
 
 
 const listSchools = (req, res) => {
-    const {latitude, longitude} = req.body;
+    
+    const {latitude, longitude} = req.query;
 
     const query = `
         SELECT id, name, address, latitude, longitude,
