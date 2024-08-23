@@ -1,17 +1,24 @@
-import mysql from "mysql";
+import mysql from "mysql2";
+import fs from "fs";
 
 export var conn = null;
-const connectDB = async () => {
-    conn = mysql.createConnection({
-        host: process.env.MYSQL_HOST,
-        user: process.env.MYSQL_USERNAME,
-        password: process.env.MYSQL_PASSWORD,
-        database: process.env.DB_NAME
-    });
+const connectDB = () => {
+    // conn = mysql.createConnection({
+    //     host: process.env.MYSQL_HOST,
+    //     user: process.env.MYSQL_USERNAME,
+    //     password: process.env.MYSQL_PASSWORD,
+    //     database: process.env.DB_NAME,
+    //     ssl: {
+    //         ca: fs.readFileSync('src/db/ca.pem')
+    //     }
+    // });
+
+    conn = mysql.createConnection(process.env.MYSQL_URI)
 
     conn.connect((error) => {
         if(error){
             console.error("DB connection failed: ", error);
+            process.exit(1)
         }
         
         console.log("MySQL Database connected successfully.")
