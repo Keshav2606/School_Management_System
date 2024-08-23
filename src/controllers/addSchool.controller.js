@@ -4,21 +4,20 @@ import { ApiResponse } from "../utils/ApiResponse.utils.js";
 
 const addSchool = (req, res) => {
 
-    const {name, address, latitude, longitude} = req.body;
+    let {name, address, latitude, longitude} = req.body;
 
     if(!(name && address && latitude && longitude)){
         throw new ApiError(400, "All fields are required.")
     }
 
-    if(typeof name !== "string"){
-        throw new ApiError(400, "Name should be in String format.")
-    }
-    
-    if(typeof address !== "string"){
-        throw new ApiError(400, "Address should be in String format.")
+    if(typeof name !== "string" && typeof address !== "string"){
+        throw new ApiError(400, "Name & Address should be in String format.")
     }
 
-    if(typeof latitude !== "number" && typeof longitude !== "number"){
+    latitude = Number(latitude)
+    longitude = Number(longitude)
+
+    if(typeof latitude !== "number" || typeof longitude !== "number" || isNaN(latitude) || isNaN(longitude)){
         throw new ApiError(400, "Latitide and Longitude should be in Number format.")
     }
 
